@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ComplainEase Grievance Portal</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">📢 ComplainEase</div><nav><a href="index.html">Post Complaint</a><a href="officer_dashboard.html">Officer Proof Desk</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Civic Grievance Redressal System</h1><p>Post complaints with photographic evidence and Google Maps location marking.</p></div>
+<div class="card"><h2>Post a Civic Complaint</h2>
+<form onsubmit="alert('Grievance registered and assigned to Zonal Officer!'); return false;">
+<div class="form-group"><label>Category:</label><select><option>Pothole / Road Damage</option><option>Garbage Overflow</option><option>Streetlight Failure</option></select></div>
+<div class="form-group"><label>Description:</label><textarea required placeholder="Describe issue location..."></textarea></div>
+<div class="form-group"><label>Upload Photo Proof:</label><input type="file"></div>
+<div class="form-group"><label>Mark Location on Map:</label>
+<div style="height:150px; background:#e2e8f0; display:flex; align-items:center; justify-content:center;">[Google Maps Location Marked: Lat 13.0418, Lng 80.2505]</div></div>
+<button class="btn-primary" type="submit">Submit Complaint</button>
+</form></div></div></body></html>

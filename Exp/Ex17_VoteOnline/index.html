@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>VoteOnline Portal</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">🇮🇳 VoteOnline</div><nav><a href="index.html">Cast Vote</a><a href="election_results.html">Election Results</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Secure Democratic E-Voting Platform</h1><p>Authenticate with Voter ID, verify via OTP, and cast encrypted ballots.</p></div>
+<div class="card"><h2>Step 1: Voter Authentication</h2>
+<div class="form-grid">
+<div class="form-group"><label>Voter ID (EPIC):</label><input type="text" value="TN/04/12984" id="vId"></div>
+<div class="form-group"><label>One-Time Password (OTP):</label><input type="text" value="482910" id="otp"></div>
+</div><button class="btn-primary" onclick="document.getElementById('ballot').style.display='block'">Verify OTP & Unlock Ballot</button></div>
+
+<div class="card" id="ballot" style="display:none;"><h2>Step 2: Cast Your Ballot (Ward #45)</h2>
+<p>Select Candidate:</p>
+<p><label><input type="radio" name="cand" checked> Arunachalam S. (Progressive Alliance - Torch)</label></p>
+<p><label><input type="radio" name="cand"> Bhavani Shankar (National People's Party - Rising Sun)</label></p>
+<p><label><input type="radio" name="cand"> NOTA (None of the Above)</label></p>
+<button class="btn-primary" onclick="alert('Vote successfully recorded! Digital receipt hash generated.')" style="margin-top:1rem;">Submit Vote</button>
+</div></div></body></html>

@@ -1,0 +1,19 @@
+/* Bus Booking Styles */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body { background:#f1f5f9; color:#1e293b; }
+.navbar { background:#dc2626; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+.navbar .logo { font-size:1.3rem; font-weight:700; }
+.navbar nav a { color:white; text-decoration:none; margin-left:1rem; font-weight:500; }
+.container { max-width:1000px; margin:2rem auto; padding:0 1rem; }
+.card { background:white; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border:1px solid #e2e8f0; }
+.search-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; }
+input, select, textarea { width:100%; padding:0.6rem; border:1px solid #cbd5e1; border-radius:6px; }
+.btn-primary { background:#dc2626; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:600; cursor:pointer; }
+.bus-card { display:flex; justify-content:space-between; align-items:center; padding:1rem; border:1px solid #cbd5e1; border-radius:6px; }
+.seat-grid { display:flex; flex-wrap:wrap; gap:8px; width:220px; margin-top:1rem; }
+.seat { width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.8rem; }
+.seat.available { background:#dcfce7; border:1px solid #86efac; color:#166534; }
+.seat.booked { background:#cbd5e1; color:#64748b; cursor:not-allowed; }
+.seat.selected { background:#3b82f6; color:white; }
+.aisle { width:20px; }
+.comment-box textarea { height:80px; margin:0.6rem 0; }

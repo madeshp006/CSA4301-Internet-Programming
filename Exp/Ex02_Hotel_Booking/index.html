@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Luxury Hotel & Resort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🏨 Grand Horizon Hotel</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Room Types & Tariffs</a>
+            <a href="about.html">About Us</a>
+            <a href="travel_guide.html">Local Travel Guide</a>
+            <a href="qa.html">Customer Service Q&A</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="#admin" class="admin-link">Admin Portal</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Experience Unrivaled Luxury in the Lap of Comfort</h1>
+        <p>Book premium suites, enjoy world-class hospitality, and savor gourmet dining.</p>
+    </div>
+
+    <div class="container">
+        <!-- Room Search & Availability Widget -->
+        <section class="card">
+            <h2>Check Real-Time Room Availability</h2>
+            <form class="booking-form" onsubmit="checkAvailability(event)">
+                <div class="form-group">
+                    <label>Destination / Property:</label>
+                    <input type="text" value="Grand Horizon Coastal Resort, Goa" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Check-in Date:</label>
+                    <input type="date" id="checkInDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Check-out Date:</label>
+                    <input type="date" id="checkOutDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Guests:</label>
+                    <input type="number" id="guestCount" min="1" max="6" value="2">
+                </div>
+                <button type="submit" class="btn-primary">Search Available Rooms</button>
+            </form>
+        </section>
+
+        <!-- 4 Room Types (Single, Double, Deluxe, Suite) -->
+        <section class="card">
+            <h2>Our 4 Exclusive Room Categories</h2>
+            <div class="room-grid">
+                <div class="room-card">
+                    <div class="room-img" style="background:#0284c7;">Single Room</div>
+                    <h3>Single Cozy Room</h3>
+                    <p class="price" id="price_single">Rs. 2,500 / night</p>
+                    <p>Single bed, city view, high-speed Wi-Fi, air conditioning, complimentary breakfast.</p>
+                    <p class="qty" id="qty_single">Available: 8 Rooms</p>
+                    <button class="btn-primary" onclick="bookRoom('Single Room', 2500)">Book Room</button>
+                </div>
+                <div class="room-card">
+                    <div class="room-img" style="background:#0369a1;">Double Room</div>
+                    <h3>Executive Double Room</h3>
+                    <p class="price" id="price_double">Rs. 4,200 / night</p>
+                    <p>Queen size bed, private balcony, Smart TV, minibar, 24/7 room service.</p>
+                    <p class="qty" id="qty_double">Available: 12 Rooms</p>
+                    <button class="btn-primary" onclick="bookRoom('Double Room', 4200)">Book Room</button>
+                </div>
+                <div class="room-card featured">
+                    <div class="room-img" style="background:#1e40af;">Deluxe Room</div>
+                    <h3>Grand Deluxe Suite</h3>
+                    <p class="price" id="price_deluxe">Rs. 6,800 / night</p>
+                    <p>King size plush bed, panoramic ocean view, deep soaking jacuzzi bathtub.</p>
+                    <p class="qty" id="qty_deluxe">Available: 5 Rooms</p>
+                    <button class="btn-primary" onclick="bookRoom('Deluxe Room', 6800)">Book Room</button>
+                </div>
+                <div class="room-card">
+                    <div class="room-img" style="background:#312e81;">Presidential Suite</div>
+                    <h3>Presidential Penthouse Suite</h3>
+                    <p class="price" id="price_suite">Rs. 12,500 / night</p>
+                    <p>Master bedroom + private lounge, infinity plunge pool, personal butler service.</p>
+                    <p class="qty" id="qty_suite">Available: 2 Suites</p>
+                    <button class="btn-primary" onclick="bookRoom('Presidential Suite', 12500)">Book Room</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking History & 3-Day Rule Enforcement -->
+        <section class="card">
+            <h2>My Booking History & Rescheduling Policy</h2>
+            <div class="policy-notice">
+                ⚠️ <strong>Cancellation & Change Policy:</strong> Bookings can be modified or cancelled free of charge <strong>at any time 3 days before the arrival date</strong>.
+            </div>
+            <table class="styled-table">
+                <thead>
+                    <tr><th>Booking ID</th><th>Room Type</th><th>Check-In</th><th>Check-Out</th><th>Total Paid</th><th>Action (3-Day Rule)</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GH-2026-904</td>
+                        <td>Grand Deluxe Suite</td>
+                        <td>2026-11-20</td>
+                        <td>2026-11-23</td>
+                        <td>Rs. 20,400</td>
+                        <td>
+                            <button class="btn-sm btn-warn" onclick="check3DayRule('2026-11-20', 'modify')">Change Booking</button>
+                            <button class="btn-sm btn-danger" onclick="check3DayRule('2026-11-20', 'cancel')">Cancel Booking</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GH-2026-881</td>
+                        <td>Executive Double Room</td>
+                        <td>2026-10-16</td>
+                        <td>2026-10-18</td>
+                        <td>Rs. 8,400</td>
+                        <td>
+                            <button class="btn-sm btn-warn" onclick="check3DayRule('2026-10-16', 'modify')">Change Booking</button>
+                            <button class="btn-sm btn-danger" onclick="check3DayRule('2026-10-16', 'cancel')">Cancel Booking</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Admin Control Panel (Pricing, Quantities, Static Pages) -->
+        <section id="admin" class="card admin-pane">
+            <h2>Administrator Control Console</h2>
+            <h3>1. Modify Quantity & Price of All 4 Room Types</h3>
+            <div class="admin-grid">
+                <div>
+                    <label>Single Room Price (Rs): <input type="number" id="adPriceSingle" value="2500"></label>
+                    <label>Single Room Qty: <input type="number" id="adQtySingle" value="8"></label>
+                </div>
+                <div>
+                    <label>Double Room Price (Rs): <input type="number" id="adPriceDouble" value="4200"></label>
+                    <label>Double Room Qty: <input type="number" id="adQtyDouble" value="12"></label>
+                </div>
+                <div>
+                    <label>Deluxe Room Price (Rs): <input type="number" id="adPriceDeluxe" value="6800"></label>
+                    <label>Deluxe Room Qty: <input type="number" id="adQtyDeluxe" value="5"></label>
+                </div>
+                <div>
+                    <label>Suite Price (Rs): <input type="number" id="adPriceSuite" value="12500"></label>
+                    <label>Suite Qty: <input type="number" id="adQtySuite" value="2"></label>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="adminUpdateRooms()" style="margin-top:1rem;">Save Room Tariffs & Capacities</button>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

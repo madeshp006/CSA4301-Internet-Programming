@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Clinical Check-in Form</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="container card"><h2>Patient Clinical Check-in Form Submitting</h2>
+<form onsubmit="alert('Check-in details submitted and appointment token generated!'); return false;">
+<div class="form-grid">
+<div class="form-group"><label>Patient Full Name:</label><input type="text" required></div>
+<div class="form-group"><label>Age:</label><input type="number" required></div>
+<div class="form-group"><label>Doctor Assigned:</label><input type="text" value="Dr. K. Senthil Nathan (Cardiology)" readonly></div>
+<div class="form-group"><label>Preferred Appointment Date & Time:</label><input type="datetime-local" required></div>
+</div>
+<div class="form-group"><label>Current Symptoms & Medical Notes:</label><textarea placeholder="Describe symptoms, known allergies, current prescriptions..."></textarea></div>
+<button class="btn-primary" type="submit">Submit Check-in & Confirm Appointment</button>
+<a href="index.html" class="btn-secondary">Cancel</a>
+</form></div></body></html>

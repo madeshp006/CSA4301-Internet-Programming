@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Home Finder Real Estate</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">🏡 Home Finder</div><nav><a href="index.html">Properties</a><a href="mortgage_calc.html">Mortgage Calculator</a><a href="property_map.html">Google Maps Locator</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Find Residential & Commercial Properties</h1><p>Save search criteria, explore interactive Google Maps, and calculate monthly mortgage EMIs.</p></div>
+<div class="card"><h2>Saved Search Criteria for Buyers</h2>
+<div class="form-grid">
+<div class="form-group"><label>Property Type:</label><select><option>Residential (Villas & Apartments)</option><option>Commercial Office</option><option>Land / Plots</option></select></div>
+<div class="form-group"><label>City / Locality:</label><input type="text" value="OMR, Chennai"></div>
+<div class="form-group"><label>Max Budget (Rs):</label><input type="number" value="15000000"></div>
+</div>
+<button class="btn-primary" onclick="alert('Search criteria saved into database!')">💾 Save Search Criteria</button>
+<button class="btn-secondary" onclick="alert('Loaded saved criteria: OMR Villas Under 1.5 Cr')">Load Saved Criteria</button>
+</div>
+<div class="grid-cards">
+<div class="item-card"><h3>Prestige Oasis 3-BHK Villa</h3><p>OMR IT Highway, Chennai | 2,400 Sq.Ft | Gated Community</p><p class="price-tag">Rs. 1,45,00,000</p>
+<a href="mortgage_calc.html?price=14500000" class="btn-primary">Calculate Mortgage EMI</a></div>
+</div></div></body></html>

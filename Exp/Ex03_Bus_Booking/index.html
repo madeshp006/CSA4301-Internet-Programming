@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBus - Online Bus Ticket Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🚌 QuickBus Express</div>
+        <nav><a href="#search">Search Buses</a><a href="#history">Booking History</a><a href="report.html">Admin Reports</a></nav>
+    </header>
+
+    <div class="container">
+        <!-- Bus Search -->
+        <section class="card" id="search">
+            <h2>Find Bus Routes & Schedules</h2>
+            <div class="search-grid">
+                <input type="text" id="src" placeholder="From (e.g. Chennai)" value="Chennai">
+                <input type="text" id="dest" placeholder="To (e.g. Bangalore)" value="Bangalore">
+                <input type="date" id="tDate" value="2026-11-20">
+                <select id="busCat">
+                    <option value="">All Categories</option>
+                    <option value="Volvo">Volvo Multi-Axle AC</option>
+                    <option value="Sleeper">Sleeper Coach</option>
+                    <option value="Semi-Sleeper">AC Semi-Sleeper</option>
+                </select>
+                <button class="btn-primary" onclick="searchBuses()">Find Buses</button>
+            </div>
+        </section>
+
+        <!-- Available Buses -->
+        <section class="card">
+            <h2>Available Buses</h2>
+            <div class="bus-card">
+                <div>
+                    <h3>Volvo B11R Multi-Axle Luxury AC (Bus #TN-01-V-8899)</h3>
+                    <p>Departure: 22:30 PM | Arrival: 05:30 AM (7 hrs) | Category: Volvo AC</p>
+                    <p>Fare: <strong>Rs. 950 / seat</strong> | Available Seats: 18 / 36</p>
+                </div>
+                <button class="btn-primary" onclick="openSeatModal('Volvo AC', 950)">Select Seats</button>
+            </div>
+        </section>
+
+        <!-- Seat Selection Modal -->
+        <div id="seatModal" class="card seat-box" style="display:none;">
+            <h3>Interactive Seat Layout (Volvo 2x2 AC)</h3>
+            <p>Click seats to select. Green = Available, Gray = Booked, Blue = Selected.</p>
+            <div class="seat-grid">
+                <div class="seat available" onclick="selectSeat(this, '1A')">1A</div>
+                <div class="seat available" onclick="selectSeat(this, '1B')">1B</div>
+                <div class="aisle"></div>
+                <div class="seat booked">1C</div>
+                <div class="seat available" onclick="selectSeat(this, '1D')">1D</div>
+                <div class="seat available" onclick="selectSeat(this, '2A')">2A</div>
+                <div class="seat booked">2B</div>
+                <div class="aisle"></div>
+                <div class="seat available" onclick="selectSeat(this, '2C')">2C</div>
+                <div class="seat available" onclick="selectSeat(this, '2D')">2D</div>
+            </div>
+            <p style="margin-top:1rem;">Selected Seats: <strong id="selSeats">None</strong> | Total: Rs. <strong id="totalFare">0</strong></p>
+            <button class="btn-primary" onclick="confirmBusTicket()" style="margin-top:0.8rem;">Confirm & Pay Online</button>
+        </div>
+
+        <!-- Comments & Reviews Section (Explicitly in Prompt) -->
+        <section class="card">
+            <h2>Post Comments & Reviews on Bus Services</h2>
+            <div class="comment-box">
+                <input type="text" id="commUser" placeholder="Your Name">
+                <textarea id="commText" placeholder="Write feedback on punctuality, cleanliness, driving..."></textarea>
+                <button class="btn-primary" onclick="postComment()">Submit Review</button>
+            </div>
+            <div id="commentsList" style="margin-top:1rem;">
+                <p><strong>Ramesh K.:</strong> Volvo B11R ride from Chennai to Bangalore was punctual and comfortable! (5★)</p>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

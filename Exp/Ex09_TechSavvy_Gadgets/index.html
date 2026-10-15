@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>TechSavvy - Gadgets Store</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">⚡ TechSavvy Gadgets</div><nav><a href="index.html">Home</a><a href="#cart">Cart (<span id="cartCount">0</span>)</a><a href="admin_inventory.html">Admin Portal</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Next-Gen Electronics & Smart Gadgets</h1><p>Smartphones, Laptops, Tablets, and Audio Accessories with exclusive discounts.</p></div>
+<!-- Categories on Homepage as asked -->
+<div class="card"><h2>Shop by Category & Subcategory</h2>
+<div style="display:flex; gap:1rem; flex-wrap:wrap;">
+<button class="btn-secondary">📱 Smartphones (Flagship, Mid-Range)</button>
+<button class="btn-secondary">💻 Laptops (Gaming, Ultrabooks)</button>
+<button class="btn-secondary">📟 Tablets (iPads, Android)</button>
+<button class="btn-secondary">🎧 Accessories (TWS, Powerbanks)</button>
+</div></div>
+<div class="grid-cards">
+<div class="item-card"><h3>MacBook Air M3 (16GB, 512GB)</h3><p>Subcategory: Ultrabooks | Apple M3 Chip, 13.6-inch Liquid Retina</p><p class="price-tag">Rs. 1,14,900</p><p class="badge badge-success">In Stock (14 Units)</p><button class="btn-primary" onclick="addToCart(114900)">Add to Cart</button></div>
+<div class="item-card"><h3>Samsung Galaxy S24 Ultra</h3><p>Subcategory: Flagship Smartphones | 200MP Quad Camera, S-Pen</p><p class="price-tag">Rs. 1,29,999</p><p class="badge badge-success">In Stock (8 Units)</p><button class="btn-primary" onclick="addToCart(129999)">Add to Cart</button></div>
+</div>
+<div class="card" id="cart"><h2>Shopping Cart & Checkout</h2>
+<p>Items: <span id="cartTotalItems">0</span> | Total Payable: Rs. <strong id="cartTotalAmt">0</strong></p>
+<button class="btn-primary" onclick="alert('Order placed successfully! Order status: PROCESSING.')">Proceed to Checkout</button>
+</div></div>
+<script>
+let count=0, total=0;
+function addToCart(p){ count++; total+=p; document.getElementById('cartCount').innerText=count; document.getElementById('cartTotalItems').innerText=count; document.getElementById('cartTotalAmt').innerText=total.toLocaleString(); alert('Added to cart!'); }
+</script></body></html>

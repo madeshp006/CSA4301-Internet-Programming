@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>RailConnect - Online Train Reservation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar"><div class="logo">🚆 RailConnect Portal</div><nav><a href="#search">Book Ticket</a><a href="#pnr">PNR Status</a><a href="#cancel">Cancel Ticket</a><a href="print_ticket.html">Print Ticket</a></nav></header>
+    <main class="container">
+        <div class="hero"><h1>Indian Railway Web Reservation</h1><p>Check live seat availability, reserve tickets, check PNR status, and process cancellations.</p></div>
+        
+        <section class="card" id="pnr">
+            <h2>PNR Status Live Enquiry</h2>
+            <div style="display:flex; gap:1rem;"><input type="text" id="pnrInput" placeholder="Enter 10-digit PNR Number"><button class="btn-primary" onclick="checkPNR()">Check Status</button></div>
+            <div id="pnrResult" style="margin-top:1rem; font-weight:600;"></div>
+        </section>
+
+        <section class="card" id="search">
+            <h2>Search Trains & Book Ticket</h2>
+            <form onsubmit="bookTrain(event)">
+                <div class="form-grid">
+                    <div class="form-group"><label>Origin Station:</label><input type="text" value="Chennai Central (MAS)" id="fromStn"></div>
+                    <div class="form-group"><label>Destination Station:</label><input type="text" value="Thiruvananthapuram (TVC)" id="toStn"></div>
+                    <div class="form-group"><label>Journey Date:</label><input type="date" id="jDate" required></div>
+                    <div class="form-group"><label>Class:</label><select id="tClass"><option value="SL">Sleeper (SL) - Rs. 485</option><option value="3A">AC 3-Tier (3A) - Rs. 1,280</option><option value="2A">AC 2-Tier (2A) - Rs. 1,850</option><option value="1A">AC First (1A) - Rs. 3,100</option></select></div>
+                </div>
+                <h3>Passenger Details</h3>
+                <div class="form-grid">
+                    <div class="form-group"><label>Passenger Name:</label><input type="text" id="pName" placeholder="Full Name" required></div>
+                    <div class="form-group"><label>Age:</label><input type="number" id="pAge" min="5" max="100" value="24" required></div>
+                    <div class="form-group"><label>Gender:</label><select><option>Male</option><option>Female</option></select></div>
+                </div>
+                <button type="submit" class="btn-primary">Reserve Ticket & Generate PNR</button>
+            </form>
+        </section>
+
+        <section class="card" id="cancel">
+            <h2>Cancel Ticket with Refund Rules</h2>
+            <p><strong>Statutory Refund Policy:</strong> > 48 hours: 80% refund | 12 - 48 hours: 50% refund | < 12 hours: No refund.</p>
+            <div style="display:flex; gap:1rem; margin-top:1rem;"><input type="text" id="cancelPnr" placeholder="Enter PNR to Cancel"><button class="btn-secondary" onclick="cancelTrainTicket()">Initiate Cancellation</button></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body></html>

@@ -1,0 +1,12 @@
+DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
+CS8661 - INTERNET PROGRAMMING LABORATORY (YEAR III / SEMESTER VI)
+STUDY MATERIAL & LAB EXPERIMENT REFERENCE MANUAL
+
+TOPICS COVERED:
+1. HTML5 Semantic Elements, Forms & Client-Side Validation
+2. CSS3 Flexbox, Grid Systems & Media Queries
+3. Client-side Scripting using JavaScript ES6 (DOM, Events, AJAX)
+4. Server-side Development using PHP, Sessions & Database Integration (MySQL)
+5. Responsive UI/UX Engineering & Web API Architecture
+
+Prepared for Students of Central Campus Library.

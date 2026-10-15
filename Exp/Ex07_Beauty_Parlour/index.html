@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Glow & Grace Beauty Parlour</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">✨ Glow & Grace Salon</div><nav><a href="index.html">Book Slot</a><a href="calendar.html">Reservations Calendar</a><a href="customer_account.html">My Account</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Luxury Hair, Skin & Bridal Treatments</h1><p>Book specialist stylists with real-time reservation calendar and instant deposits via PayPal/Stripe.</p></div>
+<div class="card"><h2>Book an Appointment</h2>
+<div class="form-grid">
+<div class="form-group"><label>Service:</label><select><option>Keratin Hair Spa (Rs. 2,500)</option><option>Hydra-Facial Glow (Rs. 1,200)</option><option>Bridal Makeup Package (Rs. 8,000)</option></select></div>
+<div class="form-group"><label>Stylist:</label><select><option>Meera Sen (Senior Hair Specialist - 4.9★)</option><option>Pooja Nair (Aesthetician - 5.0★)</option></select></div>
+<div class="form-group"><label>Date:</label><input type="date" value="2026-11-12"></div>
+</div>
+<h3>Select Time Slot (Real-Time Availability):</h3>
+<div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin:1rem 0;">
+<span class="badge badge-danger">10:00 AM (Locked / Booked)</span>
+<span class="badge badge-success" style="cursor:pointer;" onclick="alert('11:00 AM Slot Selected!')">11:00 AM (Available)</span>
+<span class="badge badge-success" style="cursor:pointer;" onclick="alert('02:00 PM Slot Selected!')">02:00 PM (Available)</span>
+<span class="badge badge-danger">04:00 PM (Locked / Booked)</span>
+</div>
+<label>Payment Preference: </label><label><input type="radio" name="p" checked> Full Payment</label> <label><input type="radio" name="p"> 25% Deposit (Stripe / PayPal)</label><br><br>
+<button class="btn-primary" onclick="alert('Appointment Confirmed! Confirmation SMS & Reminder queued.')">Confirm & Pay Deposit</button>
+</div></div></body></html>

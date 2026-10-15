@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLib - Local Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">📚 CampusLib Portal</div>
+        <nav>
+            <a href="#catalog">Book Catalog</a>
+            <a href="#materials">Study Materials</a>
+            <a href="#borrows">My Borrow History</a>
+            <a href="#admin">Librarian Admin</a>
+            <button class="btn-primary" onclick="openLoginModal()">Login / Register</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to Central Campus Library</h1>
+            <p>Search over 50,000 titles, manage borrowed books, download semester study materials, and clear fines online.</p>
+        </section>
+
+        <!-- Catalog Search Section -->
+        <section id="catalog" class="card">
+            <h2>Search and View Books</h2>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search by Title, Author, or ISBN..." onkeyup="searchBooks()">
+                <select id="catFilter" onchange="searchBooks()">
+                    <option value="">All Categories</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Tech">Information Tech</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Mechanical">Mechanical</option>
+                </select>
+            </div>
+            <table class="styled-table" id="booksTable">
+                <thead>
+                    <tr><th>ISBN</th><th>Title</th><th>Author</th><th>Category</th><th>Available Copies</th><th>Action</th></tr>
+                </thead>
+                <tbody id="booksBody">
+                    <tr><td>978-0131103627</td><td>The C Programming Language</td><td>Kernighan & Ritchie</td><td>Computer Science</td><td>5 Copies</td><td><button class="btn-sm" onclick="borrowBook('The C Programming Language')">Borrow</button></td></tr>
+                    <tr><td>978-0262033848</td><td>Introduction to Algorithms</td><td>Cormen, Leiserson</td><td>Computer Science</td><td>2 Copies</td><td><button class="btn-sm" onclick="borrowBook('Introduction to Algorithms')">Borrow</button></td></tr>
+                    <tr><td>978-0132350884</td><td>Clean Code</td><td>Robert C. Martin</td><td>Computer Science</td><td>4 Copies</td><td><button class="btn-sm" onclick="borrowBook('Clean Code')">Borrow</button></td></tr>
+                    <tr><td>978-0073523323</td><td>Database System Concepts</td><td>Silberschatz, Korth</td><td>Information Tech</td><td>6 Copies</td><td><button class="btn-sm" onclick="borrowBook('Database System Concepts')">Borrow</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Semester & Year-wise Material Downloads (Explicitly Mentioned in Prompt) -->
+        <section id="materials" class="card">
+            <h2>Course Study Materials (Year & Semester Wise)</h2>
+            <div class="filter-controls">
+                <label>Year: 
+                    <select id="yearSelect" onchange="filterMaterials()">
+                        <option value="3">Year III</option>
+                        <option value="1">Year I</option>
+                        <option value="2">Year II</option>
+                        <option value="4">Year IV</option>
+                    </select>
+                </label>
+                <label>Semester: 
+                    <select id="semSelect" onchange="filterMaterials()">
+                        <option value="6">Semester 6</option>
+                        <option value="5">Semester 5</option>
+                    </select>
+                </label>
+            </div>
+            <ul class="material-list">
+                <li>
+                    <span>📄 CS8661 - Internet Programming Lab Manual & Notes (Year 3 / Sem 6)</span>
+                    <a href="materials/Year3_Sem6_Internet_Programming_Notes.txt" download class="btn-download">Download Material</a>
+                </li>
+                <li>
+                    <span>📄 CS8691 - Artificial Intelligence Question Bank & Lecture Slides (Year 3 / Sem 6)</span>
+                    <a href="materials/Year3_Sem6_AI_Notes.txt" download class="btn-download">Download Material</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Student Borrow History & Fine Calculation -->
+        <section id="borrows" class="card">
+            <h2>My Borrow History & Fine Tracker</h2>
+            <table class="styled-table">
+                <thead>
+                    <tr><th>Book Title</th><th>Issue Date</th><th>Exp Date (Due)</th><th>Return Status</th><th>Overdue Fine (Rs. 5/day)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Database System Concepts</td><td>2026-09-01</td><td>2026-09-15</td><td><span class="badge returned">Returned</span></td><td>Rs. 0.00</td></tr>
+                    <tr><td>Operating System Principles</td><td>2026-09-20</td><td>2026-10-04</td><td><span class="badge overdue">Overdue (11 Days)</span></td><td><strong style="color:red;">Rs. 55.00</strong></td></tr>
+                </tbody>
+            </table>
+            <button class="btn-primary" onclick="payFine(55)">Pay Outstanding Fine Online (Rs. 55.00)</button>
+        </section>
+
+        <!-- Librarian Admin Dashboard -->
+        <section id="admin" class="card admin-box">
+            <h2>Librarian Admin Operations</h2>
+            <div class="admin-grid">
+                <div class="admin-action-card">
+                    <h3>Add / Update Book Inventory</h3>
+                    <input type="text" placeholder="Book Title" id="nbTitle">
+                    <input type="text" placeholder="Author" id="nbAuthor">
+                    <input type="text" placeholder="ISBN" id="nbISBN">
+                    <input type="number" placeholder="Total Copies" id="nbCopies">
+                    <button class="btn-primary" onclick="addBook()">Add Book</button>
+                </div>
+                <div class="admin-action-card">
+                    <h3>Issue Book to Student</h3>
+                    <input type="text" placeholder="Student Register No" id="issReg">
+                    <input type="text" placeholder="Book ISBN / Title" id="issBook">
+                    <button class="btn-primary" onclick="issueBook()">Issue Book</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CampusLib Central Library Portal. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
