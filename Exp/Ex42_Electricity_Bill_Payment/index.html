@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Electricity Bill Payment</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">⚡ State Electricity Board</div><nav><a href="index.html">Pay Bill</a><a href="eb_receipt.html">View Receipt</a></nav></header>
+<div class="container"><div class="hero"><h1>Online Electricity Bill Payment Portal</h1><p>Calculates exact Domestic and Commercial tiered tariffs with bimonthly cycle and Rs. 10/day fine.</p></div>
+<div class="card"><h2>Calculate & Pay Electricity Bill</h2>
+<div class="form-grid">
+<div class="form-group"><label>Connection Type:</label><select id="ebType" onchange="calcEB()"><option value="domestic">Domestic Connection</option><option value="commercial">Commercial Connection</option></select></div>
+<div class="form-group"><label>Units Consumed:</label><input type="number" id="units" value="450" onkeyup="calcEB()"></div>
+<div class="form-group"><label>Days After Due Date (Late):</label><input type="number" id="lateDays" value="5" onkeyup="calcEB()"></div>
+</div>
+<div style="background:#f8fafc; padding:1.2rem; border:1px solid #e2e8f0; border-radius:6px; margin:1rem 0;">
+<p id="slabDetail">Domestic Slabs: 1-100 @ Rs.1, 101-200 @ Rs.2.50, 201-500 @ Rs.4, >500 @ Rs.6</p>
+<p>Base Energy Charges: Rs. <strong id="baseAmt">1,350.00</strong></p>
+<p>Late Fine (Rs. 10 / day): Rs. <strong id="fineAmt" style="color:red;">50.00</strong></p>
+<p class="price-tag">Total Amount Due: Rs. <span id="totAmt">1,400.00</span></p>
+</div>
+<button class="btn-primary" onclick="alert('Payment Successful via UPI! Electronic receipt generated.'); window.location.href='eb_receipt.html';">Pay Bill Online (Rs. 1,400.00)</button>
+</div></div>
+<script>
+function calcEB() {
+    let type = document.getElementById('ebType').value;
+    let u = parseFloat(document.getElementById('units').value) || 0;
+    let late = parseFloat(document.getElementById('lateDays').value) || 0;
+    let base = 0;
+    if(type === 'domestic') {
+        document.getElementById('slabDetail').innerText = "Domestic Slabs: 1-100 @ Rs.1, 101-200 @ Rs.2.50, 201-500 @ Rs.4, >500 @ Rs.6";
+        if (u <= 100) base = u * 1.0;
+        else if (u <= 200) base = (100 * 1.0) + ((u - 100) * 2.50);
+        else if (u <= 500) base = (100 * 1.0) + (100 * 2.50) + ((u - 200) * 4.0);
+        else base = (100 * 1.0) + (100 * 2.50) + (300 * 4.0) + ((u - 500) * 6.0);
+    } else {
+        document.getElementById('slabDetail').innerText = "Commercial Slabs: 1-100 @ Rs.2, 101-200 @ Rs.4.50, 201-500 @ Rs.6, >500 @ Rs.7";
+        if (u <= 100) base = u * 2.0;
+        else if (u <= 200) base = (100 * 2.0) + ((u - 100) * 4.50);
+        else if (u <= 500) base = (100 * 2.0) + (100 * 4.50) + ((u - 200) * 6.0);
+        else base = (100 * 2.0) + (100 * 4.50) + (300 * 6.0) + ((u - 500) * 7.0);
+    }
+    let fine = late * 10.0;
+    document.getElementById('baseAmt').innerText = base.toFixed(2);
+    document.getElementById('fineAmt').innerText = fine.toFixed(2);
+    document.getElementById('totAmt').innerText = (base + fine).toFixed(2);
+}
+</script></body></html>

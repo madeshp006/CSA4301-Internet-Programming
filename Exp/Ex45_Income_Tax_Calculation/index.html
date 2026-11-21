@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Income Tax Calculator</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">📊 Income Tax Portal</div><nav><a href="index.html">Tax Calculator</a><a href="tax_summary_report.html">Summary Report</a></nav></header>
+<div class="container"><div class="hero"><h1>Income Tax Calculation Webpage</h1><p>Net Taxable Income = (Gross*12) - (HRA*12) - (Std Ded=50,000) - (Pension*12 [Max 150,000]) - (Health*12)</p></div>
+<div class="card"><h2>Enter Employee Financial Figures</h2>
+<div class="form-grid">
+<div class="form-group"><label>Monthly Gross Pay (Rs):</label><input type="number" id="g" value="95000" onkeyup="calcTax()"></div>
+<div class="form-group"><label>Monthly HRA (Rs):</label><input type="number" id="h" value="15000" onkeyup="calcTax()"></div>
+<div class="form-group"><label>Monthly Pension (Rs):</label><input type="number" id="p" value="15000" onkeyup="calcTax()"></div>
+<div class="form-group"><label>Monthly Health Ins (Rs):</label><input type="number" id="hi" value="2500" onkeyup="calcTax()"></div>
+</div>
+<div style="background:#f8fafc; padding:1.2rem; border-radius:6px; border:1px solid #e2e8f0; margin:1rem 0;">
+<p>Net Taxable Income: Rs. <strong id="netTax">7,30,000.00</strong></p>
+<p>Rebate Status: <span id="rebateStatus" class="badge badge-warning">Exceeds Rs. 5,00,000 (Tax Applicable)</span></p>
+<p class="price-tag">Total Tax Liability: Rs. <span id="taxLiability">58,500.00</span></p>
+<p>Net Income After Tax: Rs. <strong id="netAfter">10,81,500.00</strong></p>
+</div>
+<a href="tax_summary_report.html" class="btn-primary">Download Official Tax Summary Report</a>
+</div></div>
+<script>
+function calcTax() {
+    let gm = parseFloat(document.getElementById('g').value)||0;
+    let hm = parseFloat(document.getElementById('h').value)||0;
+    let pm = parseFloat(document.getElementById('p').value)||0;
+    let him = parseFloat(document.getElementById('hi').value)||0;
+    let ag = gm * 12;
+    let ah = hm * 12;
+    let std = 50000;
+    let pen = Math.min(pm * 12, 150000);
+    let hIns = him * 12;
+    let net = ag - ah - std - pen - hIns;
+    if(net < 0) net = 0;
+    let tax = 0;
+    if(net <= 500000) {
+        tax = 0;
+        document.getElementById('rebateStatus').innerText = "Below Rs. 5,00,000: Tax is NIL";
+    } else {
+        document.getElementById('rebateStatus').innerText = "Exceeds Rs. 5,00,000 (Tax Applicable)";
+        if(net <= 500000) tax = 0.05 * (net - 250000);
+        else if(net <= 1000000) tax = 12500 + 0.20 * (net - 500000);
+        else tax = 112500 + 0.30 * (net - 1000000);
+    }
+    document.getElementById('netTax').innerText = net.toLocaleString('en-IN', {minimumFractionDigits:2});
+    document.getElementById('taxLiability').innerText = tax.toLocaleString('en-IN', {minimumFractionDigits:2});
+    document.getElementById('netAfter').innerText = (ag - tax).toLocaleString('en-IN', {minimumFractionDigits:2});
+}
+</script></body></html>

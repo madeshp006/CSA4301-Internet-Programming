@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>RecipeVault Digital Cookbook</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">🍳 RecipeVault</div><nav><a href="index.html">Recipes</a><a href="meal_planner.html">Weekly Meal Planner</a><a href="printable_recipe.html">Printable Recipe</a></nav></header>
+<div class="container"><div class="hero"><h1>Explore, Cook & Share Culinary Creations</h1><p>Dynamic serving size ingredient scaling, weekly menus, and grocery lists.</p></div>
+<div class="card"><h2>Chettinad Chicken Curry</h2>
+<label>Serving Size: <input type="number" value="4" id="serv" onchange="scale(this.value)" style="width:80px;"></label>
+<ul id="ing" style="margin:1rem 0 1rem 1.5rem;">
+<li>Chicken: <span class="q">1.0</span> Kg</li>
+<li>Shallots: <span class="q">3.0</span> Nos</li>
+<li>Chettinad Masala: <span class="q">2.0</span> Tbsp</li>
+</ul>
+<a href="meal_planner.html" class="btn-primary">Add to Meal Planner</a>
+<a href="printable_recipe.html" class="btn-secondary">Printer-Friendly View</a>
+</div></div>
+<script>
+function scale(v){ let f=v/4; document.querySelectorAll('#ing .q').forEach((el,i)=>{ let b=[1.0, 3.0, 2.0][i]; el.innerText=(b*f).toFixed(1); }); }
+</script></body></html>
