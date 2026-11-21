@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>VetCare Telehealth</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="navbar"><div class="logo">🐄 VetCare Portal</div><nav><a href="index.html">Submit Case</a><a href="doctor_consultation.html">Doctor Desk</a></nav></header>
+<div class="container">
+<div class="hero"><h1>Animal Telehealth & Veterinary Consultation</h1><p>Send animal symptoms in video, audio, image or text for diagnosis and prescription.</p></div>
+<div class="card"><h2>Submit Animal Symptoms</h2>
+<form onsubmit="alert('Case transmitted to doctor! Prescription queued.'); return false;">
+<div class="form-grid">
+<div class="form-group"><label>Animal Type:</label><select><option>Cattle / Dairy Cow</option><option>Goat / Sheep</option><option>Poultry</option></select></div>
+<div class="form-group"><label>Doctor Clinic Scheme:</label><select><option>Govt CVH (Free Scheme)</option><option>Private Specialist (Fee via EasyPaisa/Bank)</option></select></div>
+<div class="form-group"><label>Attach Media (Video/Audio/Image):</label><input type="file"></div>
+</div>
+<div class="form-group"><label>Symptom Description:</label><textarea placeholder="High temperature, mouth lesions, refusal of feed..."></textarea></div>
+<button class="btn-primary" type="submit">Submit Telehealth Case</button>
+</form></div></div></body></html>
